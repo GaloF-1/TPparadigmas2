@@ -26,7 +26,7 @@ def gameplay(players):
                 answer = answer.upper()
 
             if answer == a:
-                end = time.perf_counter()  # fin del timer una vez que el usuario dio enter
+                end = time.perf_counter()  # fin del timer
                 print(f"Tiempo: {round(end - start, 2)} ")
                 if end - start > 5:
                     i["vidas"] -= 1
