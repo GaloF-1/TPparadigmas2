@@ -1,6 +1,6 @@
 import os
-from Logics import gamesets
-from Logics import gameplay
+from Logics.gamesets import cargarjugadores
+from Logics.gameplay import gameplay
 
 choice = int(input("Bienvenido a Pytespeed\n"
                    "\n"
@@ -22,7 +22,5 @@ while choice not in (1, 2, 3):
     os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 if choice == 1:
-    gameplay.gameplay([{"vidas": 3, "puntaje": 0, "mode": "medium", "nombre": "Galo", "bot": False}])
+    cargarjugadores()
 
-if choice == 2:
-    gameplay.gameplay()

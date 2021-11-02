@@ -1,17 +1,21 @@
 import os
-
+from gameplay import gameplay, gamespeed
 
 def cargarjugadores():
     """
-    Funcion que crea una lista de diccionarios(jugadores) seteando las caracteristicas de los mismos
-    :return: players(lista de diccionarios)
+    Funcion que crea una lista de diccionarios(jugadores) seteando las caracteristicas de los mismos y posteriormente
+    ejecuta el juego en el modo solicitado
+    :return: NONE
     """
+
+    # Establecer cantidad de jugadores humanos
     maxp = int(input("Ingrese la cantidad de usuarios: "))
     while maxp > 4 or maxp < 1:
         maxp = int(input("Por favor ingrese un numero entre 1 y 4: "))
 
     os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
+    # Establecer cantidad de bots
     maxb = 0
     if maxp < 4:
         maxb = int(input(f"Ingrese la cantidad de bots de 0 a {4 - maxp}: "))
@@ -20,6 +24,7 @@ def cargarjugadores():
 
     os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
+    # Establecer modos de juego
     modos = ("easy", "medium", "hard", "typespeed")
     mod = input("Ingrese el modo de juego(easy, medium, hard): ")
 
@@ -28,7 +33,7 @@ def cargarjugadores():
 
     os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
-    players = []
+    players = []  # lista de jugadores vacia
 
     # set de jugadores
 
@@ -37,28 +42,28 @@ def cargarjugadores():
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": input(f"ingrese nombre del jugador {i + 1}:"),
+                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
 
         if mod.lower() == "medium":
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": input(f"ingrese nombre del jugador {i + 1}:"),
+                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
 
         if mod.lower() == "hard":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": input(f"ingrese nombre del jugador {i + 1}:"),
+                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
 
         if mod.lower() == "typespeed":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": input(f"ingrese nombre del jugador {i + 1}:"),
+                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
 
     # set de bots
@@ -68,28 +73,31 @@ def cargarjugadores():
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": f"bot{i + 1}",
+                            "name": f"bot{i + 1}",
                             "bot": True})
 
         if mod.lower() == "medium":
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": f"bot{i + 1}",
+                            "name": f"bot{i + 1}",
                             "bot": True})
 
         if mod.lower() == "hard":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": f"bot{i + 1}",
+                            "name": f"bot{i + 1}",
                             "bot": True})
 
         if mod.lower() == "typespeed":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
-                            "nombre": f"bot{i + 1}",
+                            "name": f"bot{i + 1}",
                             "bot": True})
 
-    return players
+        if mod.lower() == "typespeed":
+            gamespeed(players)
+        else:
+            gameplay(players)
