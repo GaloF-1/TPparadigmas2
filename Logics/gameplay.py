@@ -1,16 +1,14 @@
 import random
 import time
 import os
-import dicc
+from Logics import dicc
+
 
 def gameplay(players):
     """Funcion que ejecuta el juego propiamente dicho
     :param players: lista de diccionarios datos criticos de cada jugador(vidas, modo de juego, puntaje)
     :return: NONE
     """
-
-    # funcion que limpia la consola de python
-    clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
     for i in players:
         # Seleccion de diccionarios
@@ -21,7 +19,7 @@ def gameplay(players):
             start = time.perf_counter()  # inicio del timer
             answer = input(f"El jugador debe escribir {a} \nEscribe: ")
 
-            if i["mode"] == "easy" or i["mode"] == "medio":
+            if i["mode"] == "easy" or i["mode"] == "medium":
                 a = a.upper()
                 answer = answer.upper()
 
@@ -37,9 +35,9 @@ def gameplay(players):
                 i["vidas"] -= 1
                 print("Vidas: {}".format(i["vidas"]))
 
-            clearConsole()
+            os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
         print("jugador {indice} puntos {puntos}".format(indice=i["nombre"], puntos=i["puntaje"]))
 
 
-gameplay([{"vidas": 3, "puntaje": 0, "mode": "medio", "nombre": "Galo", "bot": False}])
+#gameplay([{"vidas": 3, "puntaje": 0, "mode": "medium", "nombre": "Galo", "bot": False}])
