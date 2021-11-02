@@ -1,6 +1,5 @@
 import os
-from Logics.gamesets import cargarjugadores
-from Logics.gameplay import gameplay
+from gamesets import cargarjugadores
 
 choice = int(input("Bienvenido a Pytespeed\n"
                    "\n"

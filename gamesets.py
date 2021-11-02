@@ -97,7 +97,7 @@ def cargarjugadores():
                             "name": f"bot{i + 1}",
                             "bot": True})
 
-        if mod.lower() == "typespeed":
-            gamespeed(players)
-        else:
-            gameplay(players)
+    if mod.lower() == "typespeed":
+        gamespeed(players)
+    else:
+        gameplay(players)
