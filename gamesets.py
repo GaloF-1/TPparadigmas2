@@ -38,28 +38,14 @@ def cargarjugadores():
     # set de jugadores
 
     for i in range(maxp):
-        if mod.lower() == "easy":
+        if mod.lower() == "easy" or mod.lower() == "medium":
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
                             "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
 
-        if mod.lower() == "medium":
-            players.append({"vidas": 5,
-                            "puntaje": 0,
-                            "mode": mod.lower(),
-                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
-                            "bot": False})
-
-        if mod.lower() == "hard":
-            players.append({"vidas": 3,
-                            "puntaje": 0,
-                            "mode": mod.lower(),
-                            "name": input(f"ingrese nombre del jugador {i + 1}:"),
-                            "bot": False})
-
-        if mod.lower() == "typespeed":
+        if mod.lower() == "hard" or mod.lower() == "typespeed":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
@@ -69,28 +55,14 @@ def cargarjugadores():
     # set de bots
 
     for i in range(maxb):
-        if mod.lower() == "easy":
+        if mod.lower() == "easy" or mod.lower() == "medium":
             players.append({"vidas": 5,
                             "puntaje": 0,
                             "mode": mod.lower(),
                             "name": f"bot{i + 1}",
                             "bot": True})
 
-        if mod.lower() == "medium":
-            players.append({"vidas": 5,
-                            "puntaje": 0,
-                            "mode": mod.lower(),
-                            "name": f"bot{i + 1}",
-                            "bot": True})
-
-        if mod.lower() == "hard":
-            players.append({"vidas": 3,
-                            "puntaje": 0,
-                            "mode": mod.lower(),
-                            "name": f"bot{i + 1}",
-                            "bot": True})
-
-        if mod.lower() == "typespeed":
+        if mod.lower() == "hard" or mod.lower() == "typespeed":
             players.append({"vidas": 3,
                             "puntaje": 0,
                             "mode": mod.lower(),
