@@ -51,6 +51,7 @@ def cargarjugadores():
                             "mode": mod.lower(),
                             "name": input(f"ingrese nombre del jugador {i + 1}:"),
                             "bot": False})
+        os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
     # set de bots
 
