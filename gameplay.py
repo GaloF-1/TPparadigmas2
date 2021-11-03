@@ -10,7 +10,7 @@ def gameplay(players):
 
     for i in players:
 
-        #validacion para empezar a jugar
+        # validacion para empezar a jugar
         run = input("Jugador {} ingrese ok para comenzar: ".format(i["name"]))
         while run.lower() != "ok":
             run = input("Jugador {} ingrese ok para comenzar: ".format(i["name"]))
@@ -19,29 +19,29 @@ def gameplay(players):
         palabras = selecciondicc(i["mode"])
 
         while i["vidas"] > 0:
-            a = palabras[random.randint(0, len(palabras) - 1)]
+            word = palabras[random.randint(0, len(palabras) - 1)]
             start = time.perf_counter()  # inicio del timer
-            answer = input(f"El jugador debe escribir {a} \nEscribe: ")
+            answer = input(f"El jugador debe escribir {word} \nEscribe: ")
 
-            if i["mode"] == "easy" or i["mode"] == "medium":
-                a = a.upper()
+            if i["mode"] in ("medium", "easy"):
+                word = word.upper()
                 answer = answer.upper()
 
-            if answer == a:
+            if answer == word:
                 end = time.perf_counter()  # fin del timer
                 print(f"Tiempo: {round(end - start, 2)} ")
                 if end - start > 5:
                     i["vidas"] -= 1
                     print("Vidas: {}".format(i["vidas"]))
                 else:
-                    i["puntaje"] += len(a)
+                    i["puntaje"] += len(word)
             else:
                 i["vidas"] -= 1
                 print("Vidas: {}".format(i["vidas"]))
 
             os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
-        print("jugador {indice} puntos {puntos}".format(indice=i["nombre"], puntos=i["puntaje"]))
+        print("jugador {indice} puntos {puntos}".format(indice=i["name"], puntos=i["puntaje"]))
 
 
 def gamespeed(players):
@@ -79,4 +79,4 @@ def gamespeed(players):
         print("Jugador {}, tuvo un promedio de {} palabras por segundo".format(i["name"], round((contbuenas/60), 2)))
 
 
-#gamespeed([{"vidas": 3, "puntaje": 0, "mode": "typespeed", "name": "Galo", "bot": False}])
+gameplay([{"vidas": 3, "puntaje": 0, "mode": "medium", "name": "Galo", "bot": False}])
