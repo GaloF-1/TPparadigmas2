@@ -2,7 +2,11 @@ from funtions import set_jugador
 
 
 def selecciondicc(modo):
-
+    """
+    Funcion que llama a un archivo dependiendo del modo de juego seleccionado y coloca su contenido en una lista
+    :param modo: string dentro de la tupla (easy, medium, hard)
+    :return: lista de palabras(strings)
+    """
     palabras = []
 
     with open(f"{modo}.txt", "r") as archivo:
@@ -13,6 +17,10 @@ def selecciondicc(modo):
 
 
 def charge_players():
+    """
+    Funcion que llama al archivo games y carga en una lista su contenido previamente convertido en un diccionario
+    :return:
+    """
     players = []
     with open("games.txt", "r") as archivo:
         for i in archivo:
