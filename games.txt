@@ -1,0 +1,2 @@
+2 0 easy Galo False 
+1 0 easy asa False 
