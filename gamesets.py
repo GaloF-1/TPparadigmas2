@@ -1,10 +1,13 @@
-import os
 from frontEnd import gameplay
 from fileManagement import charge_players
-from funtions import borrar_consola, set_jugador
+from funtions import borrar_consola, set_jugador, validacion
 
 
 def mainmenu():
+    """
+    Funcion de inicio de aplicacion, destinada a dirigir al usuario en opciones de nueva partida o cargar partida
+    :return:
+    """
     choice = int(input("Bienvenido a Pytespeed\n"
                        "\n"
                        "1) Nueva partida\n"
@@ -27,16 +30,20 @@ def mainmenu():
     if choice == 1:
         game_settings()
     elif choice == 2:
-        game_charge()
+        gameplay(charge_players())
     else:
         exit(-1)
 
 
 def game_settings():
+    """
+    Set de parametros del juego, tales como la cantidad de usuarios y bots, modo de juego
+    :return:
+    """
     # Establecer cantidad de jugadores humanos
     maxp = int(input("Ingrese la cantidad de usuarios: "))
-    while maxp > 4 or maxp < 1:
-        maxp = int(input("Por favor ingrese un numero entre 1 y 4: "))
+    while maxp > 4 or maxp < 0:
+        maxp = int(input("Por favor ingrese un numero entre 0 y 4: "))
 
     # Establecer cantidad de bots
     maxb = 0
@@ -49,16 +56,10 @@ def game_settings():
 
     # Establecer modos de juego
     modos = ("easy", "medium", "hard", "typespeed")
-    mod = input("Ingrese el modo de juego(easy, medium, hard, Typespeed): ").lower()
-
-    while mod not in modos:
-        mod = input("Ingrese el modo de juego(easy, medium, hard): ").lower()
+    mod = validacion(modos, f"Ingrese el modo de juego{modos}: ",
+                            f"Por favor ingrese uno de los modos {modos}")
 
     cargar_jugadores(maxp, maxb, mod)
-
-
-def game_charge():
-    gameplay(charge_players())
 
 
 def cargar_jugadores(maxp, maxb, mod):
@@ -74,7 +75,7 @@ def cargar_jugadores(maxp, maxb, mod):
     for i in range(maxp + maxb):
         players.append(set_jugador(5 if mod in ("easy", "medium") else 3, 0, mod,
                                    input(f"ingrese nombre del jugador {i + 1}:") if i < maxp else f"bot {i + 1}",
-                                   True if i > maxp else False))
+                                   False if i < maxp else True))
         borrar_consola()
 
     gameplay(players)

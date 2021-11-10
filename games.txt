@@ -1,2 +1,4 @@
-2 0 easy Galo False 
-1 0 easy asa False 
+3 0.833 typespeed bot 1 True 
+3 0.9 typespeed bot 2 True 
+3 0.883 typespeed bot 3 True 
+3 0.917 typespeed bot 4 True 
