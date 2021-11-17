@@ -55,16 +55,23 @@ def game_settings():
     borrar_consola()
 
     # Establecer modos de juego
-    modos = ("easy", "medium", "hard", "typespeed")
-    mod = validacion(modos, f"Ingrese el modo de juego{modos}: ",
-                            f"Por favor ingrese uno de los modos {modos}")
+    mod, botmod = " ", " "
+
+    if maxp > 0:
+        modos = ("easy", "medium", "hard", "typespeed")
+        mod = validacion(modos, f"Ingrese el modo de juego{modos}: ",
+                                f"Por favor ingrese uno de los modos {modos}")
+    if maxb > 0:
+        modosbots = ("easy", "medium", "hard")
+        botmod = validacion(modosbots, f"Ingrese el modo de juego de los bots {modosbots}: ",
+                                       f"Por favor ingrese uno de los modos {modosbots}")
 
     borrar_consola()
 
-    cargar_jugadores(maxp, maxb, mod)
+    cargar_jugadores(maxp, maxb, mod, botmod)
 
 
-def cargar_jugadores(maxp, maxb, mod):
+def cargar_jugadores(maxp, maxb, mod, botmod):
     """
     Funcion que crea una lista de diccionarios(jugadores) seteando las caracteristicas de los mismos y posteriormente
     ejecuta el juego en el modo solicitado
@@ -75,7 +82,8 @@ def cargar_jugadores(maxp, maxb, mod):
     # set de jugadores y bots
 
     for i in range(maxp + maxb):
-        players.append(set_jugador(5 if mod in ("easy", "medium") else 3, 0, mod,
+        players.append(set_jugador(5 if mod == "easy" or (botmod == "easy" and i > maxp) else 3, 0,
+                                   mod if i < maxp else botmod,
                                    input(f"ingrese nombre del jugador {i + 1}:") if i < maxp else f"bot {i + 1}",
                                    False if i < maxp else True))
         borrar_consola()
