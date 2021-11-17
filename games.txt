@@ -1,2 +1,4 @@
-0 18 easy bot 1 True 
-0 17 easy bot 2 True 
+0 220 easy Galo False 
+0 83 easy Prof False 
+0 56 easy bot 3 True 
+0 48 easy bot 4 True 

@@ -13,7 +13,8 @@ def mainmenu():
                        "1) Nueva partida\n"
                        "2) Cargar Partida\n"
                        "3) Salir\n"
-                       "\n"))
+                       "\n"
+                       "Seleccion: "))
 
     borrar_consola()
 
@@ -23,7 +24,8 @@ def mainmenu():
                            "1) Nueva partida\n"
                            "2) Cargar Partida\n"
                            "3) Salir\n"
-                           "\n"))
+                           "\n"
+                           "Seleccion: "))
 
         borrar_consola()
 
