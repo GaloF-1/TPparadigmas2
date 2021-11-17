@@ -71,13 +71,13 @@ def botCpu(mode, word):
     """
     prob = random.random()
 
-    time.sleep(1)
+    time.sleep(0.5)
 
-    if mode == "easy" and prob < 0.6:
+    if mode == "easy" and prob < 0.5:
         return word
-    elif mode == "medium" and prob < 0.8:
+    elif mode == "medium" and prob < 0.65:
         return word
-    elif mode == "hard" or mode == "typespeed" and prob < 0.9:
+    elif mode == "hard" or mode == "typespeed" and prob < 0.76:
         return word
     else:
         return " "
