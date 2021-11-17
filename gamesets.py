@@ -59,6 +59,8 @@ def game_settings():
     mod = validacion(modos, f"Ingrese el modo de juego{modos}: ",
                             f"Por favor ingrese uno de los modos {modos}")
 
+    borrar_consola()
+
     cargar_jugadores(maxp, maxb, mod)
 
 

@@ -1,6 +1,6 @@
 from fileManagement import selecciondicc, savegame
 from game import gamerun, gamespeed
-from funtions import set_jugador, validacion
+from funtions import set_jugador, validacion, borrar_consola
 
 
 def gameplay(players):
@@ -24,12 +24,15 @@ def gameplay(players):
         if i["mode"] != "typespeed":
             while i["vidas"] > 0:
                 gamerun(palabras, i)
+                borrar_consola()
                 savegame(players)
         else:
             gamespeed(palabras, i)
+            borrar_consola()
             savegame(players)
 
         print("\njugador {} game over".format(i["name"]))
+        borrar_consola()
 
     scoreboard(players)
 

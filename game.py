@@ -4,7 +4,7 @@ from funtions import borrar_consola
 
 def gamerun(palabras, jugador):
     """
-    Funcion que administra los modos de juego basados en la vida del jugador
+    Funcion que administra los modos de juego basados en la vida del jugador, facil, medio, dificil
     :param palabras: lista de palabras dependiente del modo del jugador
     :param jugador: diccionario con parametros  nombre, puntos, vida, bot, modo
     :return: None

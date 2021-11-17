@@ -1,2 +1,2 @@
-0 86 medium bot 1 True 
-0 64 medium bot 2 True 
+0 14 easy bot 1 True 
+0 25 easy bot 2 True 
