@@ -86,7 +86,7 @@ def cargar_jugadores(maxp, maxb, mod, botmod):
     for i in range(maxp + maxb):
         players.append(set_jugador(5 if mod == "easy" or (botmod == "easy" and i > maxp) else 3, 0,
                                    mod if i < maxp else botmod,
-                                   input(f"ingrese nombre del jugador {i + 1}:") if i < maxp else f"bot {i + 1}",
+                                   input(f"ingrese nombre del jugador {i + 1}:") if i < maxp else f"bot_{i + 1}",
                                    False if i < maxp else True))
         borrar_consola()
 

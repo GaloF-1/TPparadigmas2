@@ -12,7 +12,7 @@ def gamerun(palabras, jugador):
     word = random.choice(palabras)
     start = time.perf_counter()  # inicio del timer
     res = input(f"El jugador debe escribir {word} \nEscribe: ") if not jugador["bot"] else botCpu(jugador["mode"], word)
-
+    borrar_consola()
     if jugador["mode"] in ("medium", "easy"):
         word = word.upper()
         res = res.upper()
@@ -23,12 +23,13 @@ def gamerun(palabras, jugador):
 
     if punto:
         jugador["puntaje"] += len(word)
-        print("\nJugador {} ha acertado, suma {} puntos\n".format(jugador["name"], jugador["puntaje"]),
+        print("Jugador {} ha acertado, suma {} puntos\n".format(jugador["name"], jugador["puntaje"]),
               "Tiempo {}\n".format(tiempo))
     else:
         jugador["vidas"] -= 1
-        print("\nJugador {}, se equivoco y pierde una vida\n".format(jugador["name"]),
+        print("Jugador {}, se equivoco y pierde una vida\n".format(jugador["name"]),
               "Vidas actuales {}\n".format(jugador["vidas"]))
+    time.sleep(1)
 
 
 def gamespeed(palabras, jugador):
@@ -43,7 +44,7 @@ def gamespeed(palabras, jugador):
 
     while timer < 60:
         p = random.choice(palabras)
-        print(round(timer, 2))
+        print(f"tiempo: {round(timer, 2)}")
         start = time.perf_counter()  # inicio del timer
         res = input(f"El jugador debe escribir {p} \nEscribe: ")if not jugador["bot"] else botCpu(jugador["mode"], p)
 
@@ -71,7 +72,7 @@ def botCpu(mode, word):
     """
     prob = random.random()
 
-    time.sleep(prob * 2)
+    time.sleep(prob * 1.3)
 
     if mode == "easy" and prob < 0.65:
         return word

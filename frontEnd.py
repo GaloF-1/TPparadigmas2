@@ -20,6 +20,7 @@ def gameplay(players):
             # validacion para empezar a jugar
             validacion("ok", "Jugador {} ingrese ok para comenzar: ".format(i["name"]),
                              "Jugador {} ingrese ok para comenzar: ".format(i["name"]))
+            borrar_consola()
 
         if i["mode"] != "typespeed":
             while i["vidas"] > 0:
@@ -31,7 +32,7 @@ def gameplay(players):
             borrar_consola()
             savegame(players)
 
-        print("\njugador {} game over".format(i["name"]))
+        print("jugador {} game over".format(i["name"]))
         borrar_consola()
 
     scoreboard(players)
@@ -47,7 +48,8 @@ def scoreboard(players):
     winer = set_jugador(0, 0, "", "", False)
 
     for i in players:
-        print("Jugador {}, puntos: {}".format(i["name"], i["puntaje"]))
+        print("Jugador {}, puntos: {}".format(i["name"], i["puntaje"]) if i["mode"] != "typespeed"
+              else "Jugador {}, palabras por minuto: {}".format(i["name"], i["puntaje"]))
         if i["puntaje"] > winer["puntaje"]:
             winer = i
         elif i["puntaje"] == winer["puntaje"]:
